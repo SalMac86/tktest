@@ -8,11 +8,9 @@ import { Question } from '../pages/question/question';
 import { History } from '../pages/history/history';
 import { Results } from '../pages/results/results';
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 
 let injections: any[] = [
     MyApp,
-    HomePage,
     Lobby,
     Question,
     History,
