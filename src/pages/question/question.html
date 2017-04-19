@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-  <ion-slide>
+  <ion-slide *ngFor="let question of questions">
     <ion-card>
       <ion-card-header>
         Option {{"A"}}
