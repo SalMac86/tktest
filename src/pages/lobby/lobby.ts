@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Question } from '../question/question';
+import { History } from '../history/history';
 /**
  * Generated class for the Lobby page.
  *
@@ -20,5 +21,12 @@ export class Lobby {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Lobby');
   }
-
+  
+  takeTest() {
+    this.navCtrl.push(Question);
+  }
+  
+  getHistory(){
+    this.navCtrl.push(History);
+  }
 }
