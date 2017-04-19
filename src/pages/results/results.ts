@@ -17,6 +17,7 @@ export class Results {
   @ViewChild('barCanvas') barCanvas;
   barChart: any;
   test: any = {};
+  index: any;
   showHome: boolean = false;
   constructor(
     public navCtrl: NavController,
@@ -27,6 +28,8 @@ export class Results {
     console.log('ionViewDidLoad ResultsPage');
     
     this.test = this.navParams.get("test");
+    this.index = this.navParams.get("index");
+    console.log(this.test);
     this.showHome = this.navParams.get("showHome");
     let tempLabels = [
       "Avoiding",
@@ -41,14 +44,14 @@ export class Results {
       data: {
         labels: tempLabels,
         datasets: [{
-          // data: [
+          // data: [ // get rid of modified to 100 scale  for below
           //   Math.floor((this.test[tempLabels[0]]/12)*100),
           //   Math.floor((this.test[tempLabels[1]]/12)*100),
           //   Math.floor((this.test[tempLabels[2]]/12)*100),
           //   Math.floor((this.test[tempLabels[3]]/12)*100),
           //   Math.floor((this.test[tempLabels[4]]/12)*100)
           // ],
-          data: [
+          data: [  //based on actual scale of results - showing with max 12
             this.test[tempLabels[0]],
             this.test[tempLabels[1]],
             this.test[tempLabels[2]],
@@ -77,8 +80,8 @@ export class Results {
           yAxes: [{
             ticks: {
               beginAtZero:true,
-              max: 12,
-              stepSize: 2
+              max: 12, //took away max: 100 and changed to 12 for scale
+              stepSize: 2 //so that it looks nicer than 5, 10 12
             }
           }]
         },

@@ -24,8 +24,8 @@ export class History {
     console.log(this.tests);
   }
   
-  getResults(test){
-    this.navCtrl.push(Results,{test: test});
+  getResults(test, index){
+    this.navCtrl.push(Results,{test: test, index: index});
   }
 
 }
