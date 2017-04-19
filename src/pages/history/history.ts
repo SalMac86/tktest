@@ -20,7 +20,7 @@ export class History {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad History');
-    this.tests = window.localStorage.getItem("tests") || [];
+    this.tests = JSON.parse(window.localStorage.getItem("tests")) || [];
     console.log(this.tests);
   }
 
