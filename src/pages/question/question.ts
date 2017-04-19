@@ -113,7 +113,7 @@ let apiQuestions = [
   templateUrl: 'question.html',
 })
 export class Question {
-  questsions: any = apiQuestions;
+  questions: any = apiQuestions;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
