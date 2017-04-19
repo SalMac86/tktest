@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
+import { Lobby } from '../lobby/lobby';
 /**
  * Generated class for the Question page.
  *
@@ -113,7 +113,9 @@ let apiQuestions = [
   templateUrl: 'question.html',
 })
 export class Question {
-  questions: any = apiQuestions;
+  @ViewChild(Slides) slides: Slides;
+  questions: any = [];
+  testAnswers: any = {};
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     
     for(let singleQuestion of apiQuestions) {
@@ -126,6 +128,30 @@ export class Question {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Question');
+    this.slides.lockSwipes(true);
+    this.testAnswers = {
+      "Avoiding": 0,
+      "Accommodating": 0,
+      "Compromising": 0,
+      "Competing": 0,
+      "Collaborating": 0
+    }
+  }
+  nextSlide(option) {
+      if(this.slides.getActiveIndex() +1 !== 30){
+      this.testAnswers[option.Style]++;
+      this.slides.lockSwipes(false);
+      this.slides.slideTo(this.slides.getActiveIndex() +1);
+      this.slides.lockSwipes(true);
+      } else {
+        //finished the test, move onto the results
+        let tests: any = JSON.parse(window.localStorage.getItem("tests")) || [];
+        this.testAnswers.createDate = new Date().toISOString();
+        tests.push(this.testAnswers);
+        window.localStorage.setItem("tests", JSON.stringify(tests));
+        this.navCtrl.setRoot(Lobby);
+      }
+        
   }
 
 }
