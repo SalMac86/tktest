@@ -13,12 +13,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'history.html',
 })
 export class History {
-
+  tests: any = [];
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad History');
+    this.tests = window.localStorage.getItem("tests") || [];
+    console.log(this.tests);
   }
 
 }
