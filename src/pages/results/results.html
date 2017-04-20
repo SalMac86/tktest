@@ -8,6 +8,11 @@
 
   <ion-navbar color="primary" text-center>
     <ion-title>Results</ion-title>
+    <ion-buttons end side="primary">
+      <button ion-button icon-only (click)="toLobby()" *ngIf="showHome">
+        <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -15,7 +20,7 @@
 
 <ion-content padding>
   <ion-card>
-    <ion-header>
+    <ion-header text-center>
       Test {{this.index + 1}}
     </ion-header>
     <canvas #barCanvas>

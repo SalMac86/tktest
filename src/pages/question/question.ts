@@ -149,7 +149,9 @@ export class Question {
         this.testAnswers.createDate = new Date().toISOString();
         tests.push(this.testAnswers);
         window.localStorage.setItem("tests", JSON.stringify(tests));
-        this.navCtrl.setRoot(Lobby);
+        this.navCtrl.setRoot(Lobby,{
+          showHome: false
+        });
       }
         
   }

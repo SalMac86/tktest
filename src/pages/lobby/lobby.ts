@@ -23,10 +23,14 @@ export class Lobby {
   }
   
   takeTest() {
-    this.navCtrl.push(Question);
+    this.navCtrl.push(Question,{
+      showHome: true
+    });
   }
   
   getHistory(){
-    this.navCtrl.push(History);
+    this.navCtrl.push(History,{
+      showHome: true
+    });
   }
 }

@@ -29,6 +29,7 @@ export class Results {
     
     this.test = this.navParams.get("test");
     this.index = this.navParams.get("index");
+    this.showHome = this.navParams.get("showHome");
     console.log(this.test);
     this.showHome = this.navParams.get("showHome");
     let tempLabels = [
@@ -95,7 +96,9 @@ export class Results {
     });
   }
   toLobby() {
-    this.navCtrl.setRoot(Lobby);
+    this.navCtrl.setRoot(Lobby, {
+      showHome: false
+    });
   }
   
 }

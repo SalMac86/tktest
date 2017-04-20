@@ -25,7 +25,11 @@ export class History {
   }
   
   getResults(test, index){
-    this.navCtrl.push(Results,{test: test, index: index});
+    this.navCtrl.push(Results,{
+      test: test, 
+      index: index,
+      showHome: true
+    });
   }
 
 }
