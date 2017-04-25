@@ -3,11 +3,16 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+
 import { Lobby } from '../pages/lobby/lobby';
 import { Question } from '../pages/question/question';
 import { History } from '../pages/history/history';
 import { Results } from '../pages/results/results';
 import { MyApp } from './app.component';
+
+import { AppUser } from '../providers/app-user';
+import { Questions } from '../providers/questions';
+import { TestResults } from '../providers/test-results';
 
 let injections: any[] = [
     MyApp,
@@ -28,7 +33,10 @@ let injections: any[] = [
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AppUser,
+    Questions,
+    TestResults
   ]
 })
 export class AppModule {}
