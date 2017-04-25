@@ -30,7 +30,14 @@ export class Register {
     if(form.invalid){
       return alert("Please fill in all required fields!");
     }
-    // this.appUsers.register(this.user);
+    
+    this.appUsers.register(this.user)
+    // .map(res => res.json())
+    // .subscribe(res => {
+    //   console.log("hope this worked");
+    // }, error => {
+    //   console.log("nope, didn't work");
+    // });
   }
 
 }
