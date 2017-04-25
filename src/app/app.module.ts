@@ -8,6 +8,10 @@ import { Lobby } from '../pages/lobby/lobby';
 import { Question } from '../pages/question/question';
 import { History } from '../pages/history/history';
 import { Results } from '../pages/results/results';
+import { Landing } from '../pages/landing/landing';
+import { Register } from '../pages/register/register';
+import { Login } from '../pages/login/login';
+
 import { MyApp } from './app.component';
 
 import { AppUser } from '../providers/app-user';
@@ -19,7 +23,10 @@ let injections: any[] = [
     Lobby,
     Question,
     History,
-    Results
+    Results,
+    Landing,
+    Register,
+    Login
   ]
 
 @NgModule({
