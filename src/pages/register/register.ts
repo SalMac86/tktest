@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { AppUsers } from '../../providers/app-users';
 /**
  * Generated class for the Register page.
  *
@@ -14,17 +15,22 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Register {
   user: any = {}
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public appUsers: AppUsers
+    ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Register');
   }
   
   signupForm(form){
+    console.log(form);
     if(form.invalid){
       return alert("Please fill in all required fields!");
     }
+    // this.appUsers.register(this.user);
   }
 
 }

@@ -14,7 +14,7 @@ import { Login } from '../pages/login/login';
 
 import { MyApp } from './app.component';
 
-import { AppUser } from '../providers/app-user';
+import { AppUsers } from '../providers/app-users';
 import { Questions } from '../providers/questions';
 import { TestResults } from '../providers/test-results';
 
@@ -41,7 +41,7 @@ let injections: any[] = [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AppUser,
+    AppUsers,
     Questions,
     TestResults
   ]
