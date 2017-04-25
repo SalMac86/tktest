@@ -20,9 +20,9 @@ export class AppUsers {
   path: string = "/AppUsers"
   
   register(newUserData) {
-    // return this.http.post(
-    //   this.baseUrl + this.path,
-    //   newUserData
-    //   )
+    return this.http.post(
+      this.baseUrl + this.path,
+      newUserData
+      )
   }
 }

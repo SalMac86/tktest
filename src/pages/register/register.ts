@@ -30,14 +30,31 @@ export class Register {
     if(form.invalid){
       return alert("Please fill in all required fields!");
     }
-    
     this.appUsers.register(this.user)
-    // .map(res => res.json())
-    // .subscribe(res => {
-    //   console.log("hope this worked");
-    // }, error => {
-    //   console.log("nope, didn't work");
-    // });
-  }
+      .map(res => res.json())
+      .subscribe(res => {
+        //handle successful responses
+        console.log("hope this worked");
+      }, 
+      error => {
+      switch(error.status) {
+        case 404:
+          alert("404: Page Not Found");
+          break;
+        case 422:
+          alert("That e-mail is already in use.");
+          break;
+        case null:
+          alert("User is offline.");
+          break;
+        case 500:
+          alert("THE SKY IS FALLING!!!");
+          break;
+        default:
+          console.log("nope, didn't work");
+          break;
+      }
+    })
 
+  }
 }
