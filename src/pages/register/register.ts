@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { AppUsers } from '../../providers/app-users';
+
+import { Lobby } from '../lobby/lobby';
 /**
  * Generated class for the Register page.
  *
@@ -33,8 +35,11 @@ export class Register {
     this.appUsers.register(this.user)
       .map(res => res.json())
       .subscribe(res => {
+        window.localStorage.setItem('token', res.token);
+        window.localStorage.setItem('userId', res.id);
+        this.navCtrl.setRoot(Lobby);
         //handle successful responses
-        console.log("hope this worked");
+        // console.log("hope this worked");
       }, 
       error => {
       switch(error.status) {
@@ -54,7 +59,7 @@ export class Register {
           console.log("nope, didn't work");
           break;
       }
-    })
+    }) 
 
   }
 }
