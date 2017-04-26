@@ -126,6 +126,7 @@ export class Question {
     questionsProv.getQuestions(window.localStorage.getItem("token"))
     .map(res => res.json())
     .subscribe(res => {
+      console.log(res);
       apiQuestions = res;
       for(let singleQuestion of apiQuestions) {
         if(!this.questions[singleQuestion.Question_Number - 1])

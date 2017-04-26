@@ -14,7 +14,7 @@ export class Questions {
   constructor(public http: Http) {
     console.log('Hello Questions Provider');
   }
-  baseUrl: string = "http://sp-17-salvatore-jbrownssf.c9users.io:8080/api"
+  baseUrl: string = "http://sp-17-salvatore-jbrownssf.c9users.io/api"
   path: string = "/Questions"
   
   getQuestions(token){
