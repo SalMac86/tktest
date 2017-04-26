@@ -23,6 +23,7 @@ export class Landing {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Landing');
+    localStorage.token = null; //just added this to try to not have any tokens before being logged in
   }
   
   userLogin() {

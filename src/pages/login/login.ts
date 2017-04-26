@@ -36,7 +36,7 @@ export class Login {
       .map(res => res.json())
       .subscribe(res => {
         window.localStorage.setItem('token', res.id);
-        window.localStorage.setItem('userId', res.userid);
+        window.localStorage.setItem('userId', res.userId);
         this.navCtrl.setRoot(Lobby);
         //handle successful responses
         // console.log("hope this worked");

@@ -3,6 +3,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Question } from '../question/question';
 import { History } from '../history/history';
 import { AppUsers } from '../../providers/app-users';
+import { Landing } from '../landing/landing';
+
+
 /**
  * Generated class for the Lobby page.
  *
@@ -39,9 +42,10 @@ export class Lobby {
   }
   
   userLogout(){
-    // console.log(localStorage.token);
+    console.log(localStorage.token);
     this.appUsers.logout(localStorage.token);
-    this.navCtrl.setRoot(Lobby);
-    
+    this.navCtrl.setRoot(Landing);
+    console.log("theoretically setRoot to Landing and logged out");
+    localStorage.token = null;
   }
 }
