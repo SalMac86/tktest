@@ -16,7 +16,7 @@ export class AppUsers {
     ) {
     console.log('Hello AppUser Provider');
   }
-  baseUrl: string = "http://sp-17-salvatore-jbrownssf.c9users.io/api"
+  baseUrl: string = "http://sp-17-salvatore-jbrownssf.c9users.io:8080/api"
   path: string = "/AppUsers"
   
   register(newUserData) {
@@ -35,7 +35,7 @@ export class AppUsers {
   
   logout(token) {
     return this.http.post(
-      this.baseUrl + this.path + '/logout' +
+      this.baseUrl + this.path + "/logout" +
       '?access_token=' + token,
       {} //arbitrary second param
       )

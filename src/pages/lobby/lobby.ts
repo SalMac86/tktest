@@ -39,7 +39,9 @@ export class Lobby {
   }
   
   userLogout(){
-    console.log(localStorage.token);
+    // console.log(localStorage.token);
     this.appUsers.logout(localStorage.token);
+    this.navCtrl.setRoot(Lobby);
+    
   }
 }
