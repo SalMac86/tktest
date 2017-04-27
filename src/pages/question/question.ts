@@ -165,6 +165,7 @@ export class Question {
         //finished the test, move onto the results
         // let tests: any = JSON.parse(window.localStorage.getItem("tests")) || [];
         this.testAnswers.createDate = new Date().toISOString();
+        this.testAnswers.userId = window.localStorage.userId;
         // tests.push(this.testAnswers);
         // window.localStorage.setItem("tests", JSON.stringify(tests));
         this.testResults.saveTest(this.testAnswers)
@@ -176,7 +177,7 @@ export class Question {
           });
         }, error => {
           alert("Danger, Will Robinson!");
-        });
+        }); 
       }
         // this.navCtrl.setRoot(Lobby,{
         //   showHome: false
