@@ -123,20 +123,20 @@ export class Question {
     public navParams: NavParams,
     public questionsProv: Questions
     ) {
-      console.log("questions initiated as empty array: " + this.questions);
+      // console.log("questions initiated as empty array: " + this.questions);
     questionsProv.getQuestions(window.localStorage.getItem("token"))
     .map(res => res.json())
     .subscribe(res => {
-      console.log("res returns: " + JSON.stringify(res));
+      // console.log("res returns: " + JSON.stringify(res));
       apiQuestions = res;
-      console.log("now apiQuestions is: " + JSON.stringify(apiQuestions));
-      console.log("now questions is:" + this.questions);
+      // console.log("now apiQuestions is: " + JSON.stringify(apiQuestions));
+      // console.log("now questions is:" + this.questions);
       for(let singleQuestion of apiQuestions) {
         if(!this.questions[singleQuestion.Question_Number - 1])
           this.questions[singleQuestion.Question_Number - 1] = {}
         this.questions[singleQuestion.Question_Number - 1][singleQuestion.Answer_ID] = singleQuestion;
       }
-      console.log("and now questions is: " + this.questions);
+      // console.log("and now questions is: " + this.questions);
     }, error => {
       alert("Danger Will Robinson!");
     });
