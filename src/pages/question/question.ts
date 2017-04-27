@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
-import { Lobby } from '../lobby/lobby';
+// import { Lobby } from '../lobby/lobby';
+import { Results } from '../results/results';
 import { Questions } from '../../providers/questions';
-
+import { TestResults } from '../../providers/test-results';
 /**
  * Generated class for the Question page.
  *
@@ -121,7 +122,8 @@ export class Question {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public questionsProv: Questions
+    public questionsProv: Questions,
+    public testResults: TestResults
     ) {
       // console.log("questions initiated as empty array: " + this.questions);
     questionsProv.getQuestions(window.localStorage.getItem("token"))
@@ -161,15 +163,26 @@ export class Question {
       this.slides.lockSwipes(true);
       } else {
         //finished the test, move onto the results
-        let tests: any = JSON.parse(window.localStorage.getItem("tests")) || [];
+        // let tests: any = JSON.parse(window.localStorage.getItem("tests")) || [];
         this.testAnswers.createDate = new Date().toISOString();
-        tests.push(this.testAnswers);
-        window.localStorage.setItem("tests", JSON.stringify(tests));
-        this.navCtrl.setRoot(Lobby,{
-          showHome: false
+        // tests.push(this.testAnswers);
+        // window.localStorage.setItem("tests", JSON.stringify(tests));
+        this.testResults.saveTest(this.testAnswers)
+        .map(res => res.json())
+        .subscribe(res => {
+          this.navCtrl.setRoot(Results, {
+            test: this.testAnswers,
+            showHome: true
+          });
+        }, error => {
+          alert("Danger, Will Robinson!");
         });
       }
-        
+        // this.navCtrl.setRoot(Lobby,{
+        //   showHome: false
+        // });
   }
-
+        
 }
+
+

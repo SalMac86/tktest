@@ -10,9 +10,18 @@ import 'rxjs/add/operator/map';
 */
 @Injectable()
 export class TestResults {
-
+  
   constructor(public http: Http) {
     console.log('Hello TestResults Provider');
+  }
+  baseUrl: string = "http://sp-17-salvatore-jbrownssf.c9users.io/api"
+  path: string = "/TestResults"
+  
+  saveTest(testAnswers){
+    return this.http.post(
+      this.baseUrl + this.path,
+      testAnswers
+      )
   }
 
 }
