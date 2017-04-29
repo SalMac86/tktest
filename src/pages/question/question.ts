@@ -1,10 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 // import { Lobby } from '../lobby/lobby';
-import { Questions } from '../../providers/questions';
 import { Results } from '../results/results';
+import { Questions } from '../../providers/questions';
 import { TestResults } from '../../providers/test-results';
-
 /**
  * Generated class for the Question page.
  *
@@ -126,17 +125,22 @@ export class Question {
     public questionsProv: Questions,
     public testResults: TestResults
     ) {
+      // console.log("questions initiated as empty array: " + this.questions);
     questionsProv.getQuestions(window.localStorage.getItem("token"))
     .map(res => res.json())
     .subscribe(res => {
+      console.log("res returns: " + JSON.stringify(res));
       apiQuestions = res;
+      console.log("now apiQuestions is: " + JSON.stringify(apiQuestions));
+      console.log("now questions is:" + this.questions);
       for(let singleQuestion of apiQuestions) {
         if(!this.questions[singleQuestion.Question_Number - 1])
           this.questions[singleQuestion.Question_Number - 1] = {}
         this.questions[singleQuestion.Question_Number - 1][singleQuestion.Answer_ID] = singleQuestion;
       }
+      console.log("and now questions is: " + this.questions);
     }, error => {
-      alert("Danger Will Robinson!");
+      alert("Danger Will Robinson! "+error);
     });
   }
 
@@ -159,9 +163,11 @@ export class Question {
       this.slides.lockSwipes(true);
       } else {
         //finished the test, move onto the results
-        // date and label test with userId
+        // let tests: any = JSON.parse(window.localStorage.getItem("tests")) || [];
         this.testAnswers.createDate = new Date().toISOString();
-        this.testAnswers.userId = (window.localStorage.getItem("userId"));
+        this.testAnswers.userId = window.localStorage.userId;
+        // tests.push(this.testAnswers);
+        // window.localStorage.setItem("tests", JSON.stringify(tests));
         this.testResults.saveTest(this.testAnswers)
         .map(res => res.json())
         .subscribe(res => {
@@ -171,7 +177,13 @@ export class Question {
           });
         }, error => {
           alert("Danger, Will Robinson!");
-        });
+        }); 
       }
+        // this.navCtrl.setRoot(Lobby,{
+        //   showHome: false
+        // });
   }
+        
 }
+
+
