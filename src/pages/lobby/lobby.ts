@@ -47,5 +47,6 @@ export class Lobby {
     this.navCtrl.setRoot(Landing);
     console.log("theoretically setRoot to Landing and logged out");
     localStorage.token = null;
+    localStorage.userId = null;
   }
 }

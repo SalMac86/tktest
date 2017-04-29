@@ -20,7 +20,7 @@
 
 <ion-content padding>
   <ion-card>
-    <ion-header text-center>
+    <ion-header text-center *ngIf="this.index">
       Test {{this.index + 1}}
     </ion-header>
     <canvas #barCanvas>
