@@ -17,9 +17,10 @@ export class TestResults {
   baseUrl: string = "http://sp-17-salvatore-jbrownssf.c9users.io:8080/api"
   path: string = "/TestResults"
   altPath: string = "/AppUsers"
-  saveTest(testAnswers){
+  saveTest(token, testAnswers){
     return this.http.post(
-      this.baseUrl + this.path,
+      this.baseUrl + this.path +
+      '?access_token=' + token,
       testAnswers
       )
   }

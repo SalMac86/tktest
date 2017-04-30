@@ -119,6 +119,7 @@ export class Question {
   @ViewChild(Slides) slides: Slides;
   questions: any = [];
   testAnswers: any = {};
+  token: any = window.localStorage.getItem("token");
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -126,7 +127,7 @@ export class Question {
     public testResults: TestResults
     ) {
       // console.log("questions initiated as empty array: " + this.questions);
-    questionsProv.getQuestions(window.localStorage.getItem("token"))
+    questionsProv.getQuestions(this.token)
     .map(res => res.json())
     .subscribe(res => {
       console.log("res returns: " + JSON.stringify(res));
@@ -168,7 +169,7 @@ export class Question {
         this.testAnswers.userId = window.localStorage.userId;
         // tests.push(this.testAnswers);
         // window.localStorage.setItem("tests", JSON.stringify(tests));
-        this.testResults.saveTest(this.testAnswers)
+        this.testResults.saveTest(this.token, this.testAnswers)
         .map(res => res.json())
         .subscribe(res => {
           this.navCtrl.setRoot(Results, {
